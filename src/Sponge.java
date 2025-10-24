@@ -33,7 +33,34 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+        // Create a string that we will return
+    StringBuilder spongString = new StringBuilder();
+
+    // Variable to track current casing
+    boolean lowercase = true;
+  
+    // Iterate through each character in the sentance
+    for (int i = 0; i < sentence.length(); i++) {
+      // Only proceed if the character is not a space or speacial character
+      if (sentence.charAt(i) != ' ') {
+        // Check if the index of that character is even or odd
+        if (!lowercase) {
+          // Case uppercase the character and add it to the string
+          spongString.append((sentence.charAt(i) + "").toUpperCase());
+          lowercase = !lowercase; // Flip the variable
+        } else {
+          // Case lowercase the character and add it to the string
+          spongString.append((sentence.charAt(i) + "").toLowerCase());
+          lowercase = !lowercase; // Flip the variable
+        }
+      } else {
+        // Add the space if there is a space
+        spongString.append(" ");
+        lowercase = true; // Set lowercase to true every time we hit a space
+      }
+    }
+    // Return the new created string
+    return spongString.toString();
   }
 
 
