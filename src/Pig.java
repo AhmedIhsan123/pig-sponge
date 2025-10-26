@@ -1,3 +1,4 @@
+import java.util.*;
 public class Pig {
 
     /*
@@ -26,7 +27,46 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        // something -> omethingsay
+
+        // Set to store vowels
+        Set<Character> vowels = new HashSet<>();
+
+        // Populate the set
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+
+        // Variable to store the updated string
+        String finalStr = "";
+
+        // Split the sentance into an array of words/strings
+        String[] words = sentence.split(" ");
+
+        // for each word
+        for (String word : words) {
+            // Check if its starts with a vowel
+            if (!vowels.contains(word.charAt(0))) {
+                // Otherwise, move the first letter to the back of the string, and add ay to it.
+                String newWord = "";
+
+                // Go from the index 1 to the end of the word
+                newWord += word.substring(1, word.length());
+                newWord += word.charAt(0);
+                newWord += "ay";
+
+                // Add the word to a new string
+                finalStr += (newWord + " ");
+            } else {
+                // If true, just add the word
+                finalStr += (word + " ");
+            }
+        }
+
+        // Return the updated string
+        return finalStr.trim();
     }
 
 
